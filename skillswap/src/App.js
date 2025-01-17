@@ -7,6 +7,8 @@ import './App.css';
 import Header from './components/header';
 import SessionPage from './pages/sessionPage';
 import ProfilePage from './pages/profile';
+import TeachPage from './pages/teach';
+import AddSkillPage from './pages/addSkill';
 
 function App() {
   return (
@@ -15,11 +17,13 @@ function App() {
         <Header />
         <main className="container mx-auto p-4">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Register />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/skill/:skillId" element={<SkillPage />} />
             <Route path="/session/:sessionId" element={<SessionPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/teach" element={<TeachPage />} />
+            <Route path="/add-skill" element={<AddSkillPage />} />
           </Routes>
         </main>
       </div>

@@ -11,9 +11,9 @@ export function SkillCard({skill}){
     return (
         <div 
             onClick={handleClick}
-            className="cursor-pointer flex flex-col justify-between rounded-xl p-4 border border-gray-500 min-w-64 max-w-64 hover:border-red-600">
+            className="cursor-pointer flex flex-col justify-between rounded-xl p-4 border border-gray-300 min-w-64 max-w-64 hover:border-blue-600">
             <div>
-                <p className="text-lg">{truncateText(skill.name, 20)}</p>
+                <p className="text-lg font-bold">{truncateText(skill.name, 20)}</p>
                 <div className="flex flex-row gap-x-3">
                     <p>{skill.location}</p>
                     <p>{skill.price} Credits</p>
@@ -27,8 +27,8 @@ export function SkillCard({skill}){
             <div>
                 <p className="text-sm mb-1 ">{skill.category}</p>
                 <div className="flex flex-wrap gap-1">
-                    {skill.tags.map((tag) => {
-                        return <span className="text-xs rounded-lg px-2 py-1 bg-gray-200">{tag}</span>
+                    {skill.tags.map((tag, idx) => {
+                        return <span key={idx} className="text-xs rounded-lg px-2 py-1 bg-gray-200">{tag}</span>
                     })}
 
                 </div>

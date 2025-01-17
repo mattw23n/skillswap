@@ -11,7 +11,7 @@ export const ProfileProvider = ({ children }) => {
     useEffect(() => {
         const loadProfile = async () => {
             try {
-                const userData = await fetchUser(12); // Fetch user with ID 1
+                const userData = await fetchUser(1); // Fetch user with ID 1
                 setProfile(userData);
             } catch (err) {
                 setError(err.message);

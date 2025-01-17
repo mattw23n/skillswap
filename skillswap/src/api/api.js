@@ -78,3 +78,42 @@ export const registerSession = async (sessionData) => {
 
     return await response.json();
 };
+
+export const addSkill = async (userId, skillData) => {
+
+    console.log(skillData)
+
+    const response = await fetch(`http://localhost:8000/users/${userId}/skills`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(skillData),
+    });
+
+
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.detail || 'Failed to add skill');
+    }
+
+    return await response.json();
+};
+
+export const registerUser = async (userData) => {
+    const response = await fetch('http://localhost:8000/users/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Failed to register');
+    }
+
+    return await response.json();
+};

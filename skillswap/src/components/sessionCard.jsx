@@ -43,10 +43,10 @@ export default function SessionCard({ session }) {
     return (
         <div 
             onClick={handleClick}
-            className="cursor-pointer flex flex-col justify-between rounded-xl p-4 border border-gray-500 min-w-64 max-w-64 hover:border-red-600"
+            className="cursor-pointer flex flex-col justify-between rounded-xl p-4 border border-gray-300 min-w-64 max-w-64 hover:border-blue-600"
         >
             <div>
-                <p className="text-lg">{truncateText(skill?.name, 20)}</p>
+                <p className="text-lg font-bold">{truncateText(skill?.name, 20)}</p>
                 <div className="flex flex-row gap-x-3">
                     <p>{skill.location}</p>
                     <p>{skill.price} Credits</p>
