@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import { Link, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/home';
+import Register from './pages/register';
+import SkillPage from './pages/skillPage';
+import { ProfileProvider } from './profileContext';
 import './App.css';
+import Header from './components/header';
+import SessionPage from './pages/sessionPage';
+import ProfilePage from './pages/profile';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProfileProvider>
+      <div>
+        <Header />
+        <main className="container mx-auto p-4">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/skill/:skillId" element={<SkillPage />} />
+            <Route path="/session/:sessionId" element={<SessionPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+          </Routes>
+        </main>
+      </div>
+    </ProfileProvider>
   );
 }
 

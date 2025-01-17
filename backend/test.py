@@ -14,12 +14,12 @@ names = [
 ]
 
 locations = [
-    "New York, USA", "San Francisco, USA", "Los Angeles, USA", 
-    "Chicago, USA", "Seattle, USA", "Austin, USA", "Boston, USA", 
-    "Denver, USA", "Miami, USA", "Atlanta, USA"
+    "Tiong Bahru", "Newton", "Pasir Ris", 
+    "Jurong East", "Yishun", "Punggol", "Bugis", 
+    "Serangoon", "Bukit Timah", "Clementi"
 ]
 
-languages = ["English", "Spanish", "French", "German", "Mandarin"]
+languages = ["English", "Malay", "Tamil", "Mandarin", "Hokkien"]
 
 interests_pool = [
     "Photography", "Python Programming", "Public Speaking", "Cooking", 
@@ -94,6 +94,20 @@ skills_pool = [
     }
 ]
 
+
+
+# Define possible time slots
+time_slots = [
+    {"start_time": "09:00", "end_time": "11:00"},
+    {"start_time": "11:00", "end_time": "13:00"},
+    {"start_time": "14:00", "end_time": "16:00"},
+    {"start_time": "16:00", "end_time": "18:00"}
+]
+
+# Define days of the week
+days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+
 # Fetch all users
 response = requests.get(f"{BASE_URL}/users")
 if response.status_code == 200:
@@ -102,12 +116,20 @@ else:
     print("Error fetching users:", response.json())
     users = []
 
+    
 # Add skills to each user
 for user in users:
     user_id = user["id"]
     # Assign 1-3 random skills to each user
     assigned_skills = random.sample(skills_pool, random.randint(1, 3))
+    
     for skill in assigned_skills:
+        # Generate random availability
+        skill["availability"] = {
+            "days": random.sample(days, random.randint(1, 4)),
+            "time_slots": random.sample(time_slots, random.randint(1, 2))
+        }
+        
         skill_response = requests.post(f"{BASE_URL}/users/{user_id}/skills", json=skill)
         if skill_response.status_code == 200:
             print(f"Skill added for User {user_id}: {skill_response.json()}")
