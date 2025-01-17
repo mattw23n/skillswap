@@ -76,7 +76,7 @@ To get started with SkillSwap, follow these steps:
 ### Clone the Repository
 
 ```bash
-git clone <repository_url>
+git clone [github.com/mattw23n/skillswap](https://github.com/mattw23n/skillswap)
 cd skillswap
 ```
 
